@@ -99,11 +99,11 @@ class Calculadora {
 		return result;
 	}
 	
-	public int calcIngresoLaboral(int year) {
+	public double calcIngresoLaboral(int year) {
 		
-		result = (int) Math.round((81.37 * year) + 1226);
+		resultDouble = (81.37 * year) + 1226;
 		
-		return result;
+		return resultDouble;
 	}
 	
 	public int calcMuertes(int year) {
