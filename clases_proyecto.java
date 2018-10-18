@@ -33,34 +33,34 @@ class Sistema {
 	}
 	public String showPoblacion(int year){
 		//La poblacion resultado respecto al anio
-		resPoblacion = ("|█████████████████████████████████████████████████████████████████|\n");
-		resPoblacion += ("Poblacion total del año " + year + " : " + calculadora.calcPoblacionTotal(year) + "personas \n");
+		resPoblacion = ("\n|█████████████████████████████████████████████████████████████████|\n\n");
+		resPoblacion += ("Poblacion total del año " + year + ": " + calculadora.calcPoblacionTotal(year) + " personas\n");
 		resPoblacion += ("Cantidad de hombres: " + calculadora.calcPoblacionHombres(year) + "\n");
-		resPoblacion += ("Cantidad de mujeres: " + calculadora.calcPoblacionMujeres(year) + "\n");
-		resPoblacion += ("|█████████████████████████████████████████████████████████████████|\n");
+		resPoblacion += ("Cantidad de mujeres: " + calculadora.calcPoblacionMujeres(year));
+		resPoblacion += ("\n\n|█████████████████████████████████████████████████████████████████|\n");
 		return resPoblacion;
 	}
 	public String showIngresoLaboral(int year){
 		//Muestra el ingreso Laboral 
-		resEmpleo = ("|█████████████████████████████████████████████████████████████████|\n");
-		resEmpleo += ("Ingreso promedio mensual de una persona del año " + year +" : Q " + calculadora.calcIngresoLaboral(year) + "\n");
-		resEmpleo += ("|█████████████████████████████████████████████████████████████████|\n");
+		resEmpleo = ("\n|█████████████████████████████████████████████████████████████████|\n\n");
+		resEmpleo += ("Ingreso promedio mensual de una persona del año " + year +": Q " + calculadora.calcIngresoLaboral(year));
+		resEmpleo += ("\n\n|█████████████████████████████████████████████████████████████████|\n");
 		return resEmpleo;
 
 	}
 	public String showMuertes(int year){
 		//Promedio general respecto a un anio la cantidad de muertes
-		resMuertes = ("|█████████████████████████████████████████████████████████████████|\n");
-		resMuertes += ("Promedio General de fallecidos en Guatemala del año " + year + ": " + calculadora.calcMuertes(year) +  "  Personas\n");
-		resMuertes += ("Promedio General de fallecidos por causa ambiental en Guatemala del año " + year + ": " + calculadora.calcMuertesCausaAmbiental(year) +  "  Personas\n");
-		resMuertes += ("|█████████████████████████████████████████████████████████████████|\n");
-		return resEmpleo;
+		resMuertes = ("\n|█████████████████████████████████████████████████████████████████|\n\n");
+		resMuertes += ("Promedio General de fallecidos en Guatemala del año " + year + ": " + calculadora.calcMuertes(year) +  " personas");
+		resMuertes += ("\nPor causa ambiental: " + calculadora.calcMuertesCausaAmbiental(year) +  "  personas");
+		resMuertes += ("\n\n|█████████████████████████████████████████████████████████████████|\n");
+		return resMuertes;
 	}
 	public String showCostoCanastaBasica(int year){
 		//Canasta basica respecto al anio
-		resCanasta = ("|█████████████████████████████████████████████████████████████████|\n");
-		resCanasta += ("Promedio General de la canasta basica del año" + year + ": " + calculadora.calcCostoCanastaBasica(year) + " Quetzales \n");
-		resCanasta += ("|█████████████████████████████████████████████████████████████████|\n");
+		resCanasta = ("\n|█████████████████████████████████████████████████████████████████|\n\n");
+		resCanasta += ("Promedio General de la canasta basica del año " + year + ": " + calculadora.calcCostoCanastaBasica(year) + " Quetzales");
+		resCanasta += ("\n\n|█████████████████████████████████████████████████████████████████|\n");
 		return resCanasta;
 	}
 
@@ -101,7 +101,7 @@ class Calculadora {
 	
 	public double calcIngresoLaboral(int year) {
 		
-		resultDouble = (81.37 * year) + 1226;
+		resultDouble = (67.732 * year) - 134409;
 		
 		return resultDouble;
 	}
