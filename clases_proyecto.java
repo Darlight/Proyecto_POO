@@ -13,21 +13,26 @@ import java.lang.*;
 
 
 class Sistema {
+	//Variables del constructor del Sistema
 	private String resPoblacion;
 	private String resEmpleo;
 	private String resMuertes;
 	private String resCanasta;
 	private Calculadora calculadora;
 	private Analizador analizador;
+	//Constructor de sistema
 	public Sistema(){
+		//Se inicia con valores los variables de instancia
 		resPoblacion = "";
 		resEmpleo = "";
 		resMuertes = "";
 		resCanasta = "";
+		//Se crean las clases principales complementarios para estimar los datos programados
 		calculadora =  new Calculadora();
 		analizador = new Analizador();
 	}
 	public String showPoblacion(int year){
+		//La poblacion resultado respecto al anio
 		resPoblacion = ("|█████████████████████████████████████████████████████████████████|\n");
 		resPoblacion += ("Poblacion total del año " + year + " : " + calculadora.calcPoblacionTotal(year) + "personas \n");
 		resPoblacion += ("Cantidad de hombres: " + calculadora.calcPoblacionHombres(year) + "\n");
@@ -36,6 +41,7 @@ class Sistema {
 		return resPoblacion;
 	}
 	public String showIngresoLaboral(int year){
+		//Muestra el ingreso Laboral 
 		resEmpleo = ("|█████████████████████████████████████████████████████████████████|\n");
 		resEmpleo += ("Ingreso promedio mensual de una persona del año " + year +" : Q " + calculadora.calcIngresoLaboral(year) + "\n");
 		resEmpleo += ("|█████████████████████████████████████████████████████████████████|\n");
@@ -43,6 +49,7 @@ class Sistema {
 
 	}
 	public String showMuertes(int year){
+		//Promedio general respecto a un anio la cantidad de muertes
 		resMuertes = ("|█████████████████████████████████████████████████████████████████|\n");
 		resMuertes += ("Promedio General de fallecidos en Guatemala del año " + year + ": " + calculadora.calcMuertes(year) +  "  Personas\n");
 		resMuertes += ("Promedio General de fallecidos por causa ambiental en Guatemala del año " + year + ": " + calculadora.calcMuertesCausaAmbiental(year) +  "  Personas\n");
@@ -50,6 +57,7 @@ class Sistema {
 		return resEmpleo;
 	}
 	public String showCostoCanastaBasica(int year){
+		//Canasta basica respecto al anio
 		resCanasta = ("|█████████████████████████████████████████████████████████████████|\n");
 		resCanasta += ("Promedio General de la canasta basica del año" + year + ": " + calculadora.calcCostoCanastaBasica(year) + " Quetzales \n");
 		resCanasta += ("|█████████████████████████████████████████████████████████████████|\n");
@@ -63,8 +71,7 @@ class Calculadora {
 	// variables
 	protected int result;
 	protected double resultDouble;
-	
-	
+
 	// constructor
 	public Calculadora() {}
 	
