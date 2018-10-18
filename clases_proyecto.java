@@ -12,7 +12,51 @@
 import java.lang.*;
 
 
-class Sitema {}
+class Sistema {
+	private String resPoblacion;
+	private String resEmpleo;
+	private String resMuertes;
+	private String resCanasta;
+	private Calculadora calculadora;
+	private Analizador analizador;
+	public Sistema(){
+		resPoblacion = "";
+		resEmpleo = "";
+		resMuertes = "";
+		resCanasta = "";
+		calculadora =  new Calculadora();
+		analizador = new Analizador();
+	}
+	public String showPoblacion(int year){
+		resPoblacion = ("|█████████████████████████████████████████████████████████████████|\n");
+		resPoblacion += ("Poblacion total del año " + year + " : " + calculadora.calcPoblacionTotal(year) + "personas \n");
+		resPoblacion += ("Cantidad de hombres: " + calculadora.calcPoblacionHombres(year) + "\n");
+		resPoblacion += ("Cantidad de mujeres: " + calculadora.calcPoblacionMujeres(year) + "\n");
+		resPoblacion += ("|█████████████████████████████████████████████████████████████████|\n");
+		return resPoblacion;
+	}
+	public String showIngresoLaboral(int year){
+		resEmpleo = ("|█████████████████████████████████████████████████████████████████|\n");
+		resEmpleo += ("Ingreso promedio mensual de una persona del año " + year +" : Q " + calculadora.calcIngresoLaboral(year) + "\n");
+		resEmpleo += ("|█████████████████████████████████████████████████████████████████|\n");
+		return resEmpleo;
+
+	}
+	public String showMuertes(int year){
+		resMuertes = ("|█████████████████████████████████████████████████████████████████|\n");
+		resMuertes += ("Promedio General de fallecidos en Guatemala del año " + year + ": " + calculadora.calcMuertes(year) +  "  Personas\n");
+		resMuertes += ("Promedio General de fallecidos por causa ambiental en Guatemala del año " + year + ": " + calculadora.calcMuertesCausaAmbiental(year) +  "  Personas\n");
+		resMuertes += ("|█████████████████████████████████████████████████████████████████|\n");
+		return resEmpleo;
+	}
+	public String showCostoCanastaBasica(int year){
+		resCanasta = ("|█████████████████████████████████████████████████████████████████|\n");
+		resCanasta += ("Promedio General de la canasta basica del año" + year + ": " + calculadora.calcCostoCanastaBasica(year) + " Quetzales \n");
+		resCanasta += ("|█████████████████████████████████████████████████████████████████|\n");
+		return resCanasta;
+	}
+
+}
 
 class Calculadora {
 	
