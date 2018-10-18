@@ -17,8 +17,8 @@ class Sitema {}
 class Calculadora {
 	
 	// variables
-	private int result;
-	private double resultDouble;
+	protected int result;
+	protected double resultDouble;
 	
 	
 	// constructor
