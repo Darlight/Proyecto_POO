@@ -126,7 +126,6 @@ public class driver_proyecto {
 				System.out.println(simulador.showIngresoLaboral(inputYear));
 				
 			} else if (option == 3) {
-			System.out.println("entroo a 3");
 				
 				System.out.println(simulador.showMuertes(inputYear));
 				
