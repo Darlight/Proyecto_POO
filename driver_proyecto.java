@@ -84,7 +84,7 @@ public class driver_proyecto {
 			}
 			
 			
-			if (option != 6 && option != 5) {
+			if (option != 6) {
 			
 				System.out.println("\n>>> Ingrese el anio para el cual desea hacer el calculo (futuro): ");
 		
@@ -135,13 +135,22 @@ public class driver_proyecto {
 				
 			} else if (option == 5) {
 				
-				// El analizador todavia no ha sido implementado
-				option = 6;
+				System.out.println("\n________________________________________________________________\n\n\t   Bienvenido al analizador de SimulaGuate");
+				
+				System.out.println("\n>>> Usted a ingresado el anio " + inputYear + " para realizar el calculo.");
+				System.out.println(">>> Espere un momento... \n   el analizador esta realizando los calculos.");
+				
+				try { Thread.sleep(5000); } catch (Exception e) { System.out.println(">>> ERROR: " + e); } // para que el usuario pueda leer
+				
+				System.out.println("\n\n\n\n\n\n\n\n\n\n\t\t\t    ANALISIS" + simulador.showAnalisis(inputYear));
 				
 			}
 			
-			System.out.println("\n\t\t  Presione ENTER para continuar.");
-			scan.nextLine();
+			if (option != 6) {
+				
+				System.out.println("\n\t\t  Presione ENTER para continuar.");
+				scan.nextLine();
+			}
 		}
 		
 	System.out.println("\t\t Gracias por usar SimulaGuate :)\n\n\n");
