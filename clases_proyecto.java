@@ -247,124 +247,124 @@ class Analizador extends Calculadora {
 		// para el analisis de pobreza
 		double resIngreso1 = this.calcIngresoLaboral(year1);
 		double resCostoCB1 = this.calcCostoCanastaBasica(year1);
-		double resIngreso1 = this.calcIngresoLaboral(year2);
-		double resCostoCB1 = this.calcCostoCanastaBasica(year2);
+		double resIngreso2 = this.calcIngresoLaboral(year2);
+		double resCostoCB2 = this.calcCostoCanastaBasica(year2);
 		
 		
 		// para el analisis del ambiente
 		int resMuertes1 = this.calcMuertes(year1);
 		int resMuertesA1 = this.calcMuertesCausaAmbiental(year1);
-		int resMuertes1 = this.calcMuertes(year2);
-		int resMuertesA1 = this.calcMuertesCausaAmbiental(year2);
+		int resMuertes2 = this.calcMuertes(year2);
+		int resMuertesA2 = this.calcMuertesCausaAmbiental(year2);
 		
 		analisis += "\n\n - En cuanto a las poblaciones, se puede decir que esta conformadas";
 		//1era condicion
 		if (resHombres1 > resMujeres1 && resHombres2 > resMujeres2) {
 
-			analisis += "\n   mayormente por hombres del " + year1 + ", siendo estos el " + Math.round(100*resHombres1/(resHombres1+resMujeres1)) + "%, mientras que del " + year2 + " , conformados mayormente de hombres, siendo estos el " + Math.round(100*resHombres2/(resHombres2+resMujeres2)) + "%.";
+			analisis += "\n   mayormente por hombres del " + format.format(year1) + ", siendo estos el " + format.format(Math.round(100*resHombres1/(resHombres1+resMujeres1))) + "%, mientras que del " + format.format(year2) + " , conformados mayormente de hombres, siendo estos el " + format.format(Math.round(100*resHombres2/(resHombres2+resMujeres2))) + "%.";
 		//2 condicion
 		} else if (resHombres1 < resMujeres1 && resHombres2 > resMujeres2) {
 			
-			analisis += "\n   mayormente por mujeres, siendo estas el " + Math.round(100*resMujeres1/(resHombres1+resMujeres1)) + "%, mientras que del " + year2 + " , conformados mayormente de hombres, siendo estos el " + Math.round(100*resMujeres2/(resHombres2+resMujeres2)) + "%.";
+			analisis += "\n   mayormente por mujeres, siendo estas el " + format.format(Math.round(100*resMujeres1/(resHombres1+resMujeres1))) + "%, mientras que del " + format.format(year2) + " , conformados mayormente de hombres, siendo estos el " + format.format(Math.round(100*resMujeres2/(resHombres2+resMujeres2))) + "%.";
 		//3 condicion	
 		} else if (resHombres1 > resMujeres1 && resHombres2 < resMujeres2) {
 
-			analisis += "\n   mayormente por hombres del " + year1 + " , siendo estos el " + Math.round(100*resHombres1/(resHombres1+resMujeres1)) + "%, mientras que del " + year2 + " , conformados mayormente de mujeres, siendo estas el " + Math.round(100*resMujeres2/(resHombres2+resMujeres2)) + "%.";
+			analisis += "\n   mayormente por hombres del " + format.format(year1) + " , siendo estos el " + format.format(Math.round(100*resHombres1/(resHombres1+resMujeres1))) + "%, mientras que del " + format.format(year2) + " , conformados mayormente de mujeres, siendo estas el " + format.format(Math.round(100*resMujeres2/(resHombres2+resMujeres2))) + "%.";
 		//4 condicion
 		} else if (resHombres1 < resMujeres1 && resHombres2 < resMujeres2) {
 		
-			analisis += "\n   mayormente por mujeres del " + year1 + " , siendo estos el " + Math.round(100*resMujeres1/(resHombres1+resMujeres1)) + "%, mientras que del " + year2 + " , conformados mayormente de mujeres, siendo estas el " + Math.round(100*resMujeres2/(resHombres2+resMujeres2)) + "%.";
+			analisis += "\n   mayormente por mujeres del " + format.format(year1) + " , siendo estos el " + format.format(Math.round(100*resMujeres1/(resHombres1+resMujeres1))) + "%, mientras que del " + format.format(year2) + " , conformados mayormente de mujeres, siendo estas el " + format.format(Math.round(100*resMujeres2/(resHombres2+resMujeres2))) + "%.";
 		//5 condicion
 		}else if (resHombres1 == resMujeres1 && resHombres2 < resMujeres2) {
 		
-			analisis += "\n   por la misma cantidad de hombres que mujeres del"  + year1 + " (50%), mientras que del " + year2 + ", conformados mayormente de mujeres, siendo estas el " + Math.round(100*resMujeres2/(resHombres2+resMujeres2)) + "%.";
+			analisis += "\n   por la misma cantidad de hombres que mujeres del"  + format.format(year1) + " (50%), mientras que del " + format.format(year2) + ", conformados mayormente de mujeres, siendo estas el " + format.format(Math.round(100*resMujeres2/(resHombres2+resMujeres2))) + "%.";
 		//6 condicion
 		} else if (resHombres1 == resMujeres1 && resHombres2 > resMujeres2) {
 			
-			analisis += "\n   por la misma cantidad de hombres que mujeres del"  + year1 + " (50%), mientras que del " + year2 + ", conformados mayormente de hombres, siendo estos el " + Math.round(100*resHombres2/(resHombres2+resMujeres2)) + "%.";
+			analisis += "\n   por la misma cantidad de hombres que mujeres del"  + format.format(year1) + " (50%), mientras que del " + format.format(year2) + ", conformados mayormente de hombres, siendo estos el " + format.format(Math.round(100*resHombres2/(resHombres2+resMujeres2))) + "%.";
 		//7 condicion
 		} else if (resHombres1 > resMujeres1 && resHombres2 == resMujeres2) {
 
-			analisis += "\n   mayormente por hombres del " + year1 + ", siendo estos el " + Math.round(100*resHombres1/(resHombres1+resMujeres1)) + "%, mientras que del " + year2 + " , por la misma cantidad de hombres que mujeres (50%).";
+			analisis += "\n   mayormente por hombres del " + format.format(year1) + ", siendo estos el " + format.format(Math.round(100*resHombres1/(resHombres1+resMujeres1))) + "%, mientras que del " + format.format(year2) + " , por la misma cantidad de hombres que mujeres (50%).";
 
 		//8 condicion
 		} else if (resHombres1 < resMujeres1 && resHombres2 == resMujeres2) {
 
-			analisis += "\n   mayormente por mujeres del " + year1 + ", siendo estas el " + Math.round(100*resMujeres1/(resMujeres1+resMujeres1)) + "%, mientras que del " + year2 + " , por la misma cantidad de hombres que mujeres (50%).";
+			analisis += "\n   mayormente por mujeres del " + format.format(year1) + ", siendo estas el " + format.format(Math.round(100*resMujeres1/(resMujeres1+resMujeres1))) + "%, mientras que del " + format.format(year2) + " , por la misma cantidad de hombres que mujeres (50%).";
 		//9 condicion
 		}else if (resHombres1 == resMujeres1 && resHombres2 == resMujeres2) {
 			
-			analisis += "\n   por la misma cantidad de hombres que mujeres en ambas poblaciones (50%)."
+			analisis += "\n   por la misma cantidad de hombres que mujeres en ambas poblaciones (50%).";
 
 		}
 		
-		analisis += "\n   La poblacion total se estima que sera " + resPoblacion1 + " personas para el " + year1 + ", mientras que del " + year2 + " sera" + resPoblacion2 + " personas.";
+		analisis += "\n   La poblacion total se estima que sera " + format.format(resPoblacion1) + " personas para el " + format.format(year1) + ", mientras que del " + format.format(year2) + " sera" + format.format(resPoblacion2) + " personas.";
 		
 		
 	// pobreza
 		analisis += "\n\n - En cuanto a la calidad de vida y pobreza, se puede decir que ";
 		if (resIngreso1 > resCostoCB1 && resIngreso2 > resCostoCB2) {
 
-			analisis += "\n   esta en buen estado porque el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso1) + ") \n  del " + year1 ", le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB1) + ").";
-			analisis += "\n En el caso del " + year2 + ", tambien esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso2) + ") \n  del " + year2 ", le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB2) + ").";
+			analisis += "\n   esta en buen estado porque el ingreso mensual promedio para una persona (Q. " + format.format(Math.round(resIngreso1)) + ") \n  del " + format.format(year1) + ", le es suficiente para poder comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB1)) + ").";
+			analisis += "\n En el caso del " + format.format(year2) + ", tambien esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + format.format(Math.round(resIngreso2)) + ") \n  del " + format.format(year2) + ", le es suficiente para poder comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB2)) + ").";
 			analisis += "\n   Se puede decir que gran parte de la poblacion en ambos casos no viven en pobreza extrema.";
 			
 		} else if (resIngreso1 > resCostoCB1 && resIngreso2 < resCostoCB2) {
 			
-			analisis += "\n   esta en buen estado porque el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso1) + ") \n  del " + year1 ", le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB1) + ").";
-			analisis += "\n En el caso del " + year2 + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero no les queda dinero para nada mas.";
-			analisis += "\n   Se puede decir que gran parte de la poblacion del " + year1 +" no viven en pobreza extrema. Sin embargo, el " + year2 +  " no contiene el promedio necesario de economia para vivir sanos en su vida cotidiana.";
+			analisis += "\n   esta en buen estado porque el ingreso mensual promedio para una persona (Q. " + format.format(Math.round(resIngreso1)) + ") \n  del " + format.format(year1) + ", le es suficiente para poder comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB1)) + ").";
+			analisis += "\n En el caso del " + format.format(year2) + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB2)) + "), pero no les queda dinero para nada mas.";
+			analisis += "\n   Se puede decir que gran parte de la poblacion del " + format.format(year1) +" no viven en pobreza extrema. Sin embargo, el " + format.format(year2) +  " no contiene el promedio necesario de economia para vivir sanos en su vida cotidiana.";
 			
 		} else if (resIngreso1 > resCostoCB1 && resIngreso2 == resCostoCB2){
 		
-			analisis += "\n   esta en buen estado porque el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso1) + ") \n  del " + year1 +  ", le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB1) + ").";
-			analisis += "\n En el caso del " + year2 + ", esta en un critico estado por que las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + Math.round(resIngreso2) + ").";
-			analisis += "\n  Se puede decir que gran parte de la poblacion del " + year1 +" no viven en pobreza extrema. Sin embargo, en el " + year2 + " los ciudadanos estarian solamente sobreviviendo, indicando un mal desarrollo humano.";
+			analisis += "\n   esta en buen estado porque el ingreso mensual promedio para una persona (Q. " + format.format(Math.round(resIngreso1)) + ") \n  del " + format.format(year1) +  ", le es suficiente para poder comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB1)) + ").";
+			analisis += "\n En el caso del " + format.format(year2) + ", esta en un critico estado por que las personas en promedio pueden comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB2)) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + format.format(Math.round(resIngreso2)) + ").";
+			analisis += "\n  Se puede decir que gran parte de la poblacion del " + format.format(year1) +" no viven en pobreza extrema. Sin embargo, en el " + format.format(year2) + " los ciudadanos estarian solamente sobreviviendo, indicando un mal desarrollo humano.";
 
 		} else if (resIngreso1 < resCostoCB1 && resIngreso2 > resCostoCB2) {
 
-			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB1) + "), pero no les queda dinero para nada mas.";
-			analisis += "\n En el caso del " + year2 + ", tambien esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso2) + "), le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB2) + ").";
-			analisis += "\n   Se puede decir que gran parte de la poblacion del " + year2 +" no viven en pobreza extrema. Sin embargo, el " + year1 +  " no contiene el promedio necesario de economia para vivir sanos en su vida cotidiana.";
+			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB1)) + "), pero no les queda dinero para nada mas.";
+			analisis += "\n En el caso del " + format.format(year2) + ", tambien esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + format.format(Math.round(resIngreso2)) + "), le es suficiente para poder comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB2)) + ").";
+			analisis += "\n   Se puede decir que gran parte de la poblacion del " + format.format(year2) +" no viven en pobreza extrema. Sin embargo, el " + format.format(year1) +  " no contiene el promedio necesario de economia para vivir sanos en su vida cotidiana.";
 
 		}else if (resIngreso1 < resCostoCB1 && resIngreso2 < resCostoCB2) {
-			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB1) + "), pero no les queda dinero para nada mas.";
-			analisis += "\n En el caso del " + year2 + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero no les queda dinero para nada mas.";
+			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB1)) + "), pero no les queda dinero para nada mas.";
+			analisis += "\n En el caso del " + format.format(year2) + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB2)) + "), pero no les queda dinero para nada mas.";
 			analisis += "\n   Se puede decir que gran parte de la poblacion en ambos casos viven en pobreza extrema.";
 
 		}else if (resIngreso1 < resCostoCB1 && resIngreso2 == resCostoCB2) {
-			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB1) + "), pero no les queda dinero para nada mas.";
-			analisis += "\n En el caso del " + year2 + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + Math.round(resIngreso2) + ").";
-			analisis += "\n   Se puede decir que gran parte de la poblacion del " + year1 +"  viven en pobreza extrema. Sin embargo, el " + year2 + " los ciudadanos estarian solamnete sobreviviendo, indicando un mal desarrollo humano.";
+			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB1)) + "), pero no les queda dinero para nada mas.";
+			analisis += "\n En el caso del " + format.format(year2) + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB2)) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + format.format(Math.round(resIngreso2)) + ").";
+			analisis += "\n   Se puede decir que gran parte de la poblacion del " + format.format(year1) +"  viven en pobreza extrema. Sin embargo, el " + format.format(year2) + " los ciudadanos estarian solamnete sobreviviendo, indicando un mal desarrollo humano.";
 		}else if (resIngreso1 == resCostoCB1 && resIngreso2 > resCostoCB2) {
-			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + Math.round(resIngreso2) + ").";
-			analisis += "\n En el caso del " + year2 + ", tambien esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso2) + "), le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB2) + ").";
-			analisis += "\n   Se puede decir que gran parte de la poblacion del " + year2 +"  no viven en pobreza extrema. Sin embargo, el " + year1 +  " los ciudadanos estarian solamente sobreviviendo, indicando un mal desarrollo humano.";
+			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB2)) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + format.format(Math.round(resIngreso2)) + ").";
+			analisis += "\n En el caso del " + format.format(year2) + ", tambien esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + format.format(Math.round(resIngreso2)) + "), le es suficiente para poder comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB2)) + ").";
+			analisis += "\n   Se puede decir que gran parte de la poblacion del " + format.format(year2) +"  no viven en pobreza extrema. Sin embargo, el " + format.format(year1) +  " los ciudadanos estarian solamente sobreviviendo, indicando un mal desarrollo humano.";
 		}else if (resIngreso1 == resCostoCB1 && resIngreso2 < resCostoCB2) {
-			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + Math.round(resIngreso2) + ").";
-			analisis += "\n En el caso del " + year2 + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero no les queda dinero para nada mas.";
-			analisis += "\n   Se puede decir que gran parte de la poblacion del " + year2 +"  no viven en pobreza extrema. Sin embargo, el " + year1 +  " los ciudadanos estarian solamente sobreviviendo, indicando un mal desarrollo humano.";
+			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB2)) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + format.format(Math.round(resIngreso2)) + ").";
+			analisis += "\n En el caso del " + format.format(year2) + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB2)) + "), pero no les queda dinero para nada mas.";
+			analisis += "\n   Se puede decir que gran parte de la poblacion del " + format.format(year2) +"  no viven en pobreza extrema. Sin embargo, el " + format.format(year1) +  " los ciudadanos estarian solamente sobreviviendo, indicando un mal desarrollo humano.";
 		}else if (resIngreso1 == resCostoCB1 && resIngreso2 == resCostoCB2) {
-			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + Math.round(resIngreso2) + ").";
-			analisis += "\n En el caso del " + year2 + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + Math.round(resIngreso2) + ").";
+			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB2)) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + format.format(Math.round(resIngreso2)) + ").";
+			analisis += "\n En el caso del " + format.format(year2) + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB2)) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + format.format(Math.round(resIngreso2)) + ").";
 			analisis += "\n   Se puede decir que gran parte de la poblacion en ambos casos solo sobreviven para alimentarse, pero no logran destacar en un desarrollo humano positivo";
 		}
 		
 		 
 	// ambiente
 		analisis += "\n\n - En cuanto al estado del medio ambiente, se puede decir que ";
-		if (resMuertes > resMuertesA) {
-			analisis += "\n   esta en buen estado por que hay mas muertes normales (" + resMuertes + ") que por causa del medio ambiente (" + resMuertesA + ").";
-			analisis += "\n   Siendo estas solo el " + Math.round(100*resMuertesA/resMuertes) + "% de las defunciones totales.";
+		if (resMuertes1 > resMuertesA1) {
+			analisis += "\n   esta en buen estado por que hay mas muertes normales (" + format.format(resMuertes1) + ") que por causa del medio ambiente (" + format.format(resMuertesA1) + ").";
+			analisis += "\n   Siendo estas solo el " + format.format(Math.round(100*resMuertesA1/resMuertes1)) + "% de las defunciones totales.";
 			
-		} else if (resMuertes < resMuertesA) {
+		} else if (resMuertes1 < resMuertesA1) {
 			
-			analisis += "\n   esta en muy mal estado por que hay mas muertes a causa del ambiente (" + resMuertesA + ") que por causa natural (" + resMuertes + ").";
-			analisis += "\n   Siendo la diferencia entre estas de " + (resMuertesA-resMuertes) + " defunciones.";
+			analisis += "\n   esta en muy mal estado por que hay mas muertes a causa del ambiente (" + format.format(resMuertesA2) + ") que por causa natural (" + format.format(resMuertes1) + ").";
+			analisis += "\n   Siendo la diferencia entre estas de " + format.format((resMuertesA1-resMuertes1)) + " defunciones.";
 			
 		} else {
 		
-			analisis += "\n   esta en un estado critico por que la cantidad de personas que mueren a causa del ambiente (" + resMuertesA + ") iguala a la cantidad de personas que mueren por causa natural (" + resMuertes + ").";
+			analisis += "\n   esta en un estado critico por que la cantidad de personas que mueren a causa del ambiente (" + format.format(resMuertesA1) + ") iguala a la cantidad de personas que mueren por causa natural (" + format.format(resMuertes1) + ").";
 		}
 		
 		
