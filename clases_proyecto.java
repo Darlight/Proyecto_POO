@@ -1,15 +1,17 @@
-// Universidad del Valle de Guatemala
-// Proyecto POO
-// Grupo 6
-// Luis Quezada 18028
-// Mario Perdomo 18029
-// Andree Toledo 18439
-// Josue Sagastume 18173
-// Martin Ortega 18029
+/*
+Universidad del Valle de Guatemala
+Proyecto POO
+Grupo 6
+Luis Quezada 18028
+Mario Perdomo 18029
+Andree Toledo 18439
+Josue Sagastume 18173
+Martin Ortega 18020
+Classes del Proyecto
+*/
 
-// Classes del Proyecto
-/**/
 import java.lang.*;
+import java.text.NumberFormat;
 
 
 class Sistema {
@@ -152,7 +154,8 @@ class Analizador extends Calculadora {
 	
 	// constructor
 	public Analizador() {}
-	
+	private NumberFormat format = NumberFormat.getInstance();	
+
 	public String analize(int year) {
 		
 		String analisis ="\nPara el " + year + " se obtiene el siguiente analisis:";
@@ -188,40 +191,40 @@ class Analizador extends Calculadora {
 			analisis += "\n   por la misma cantidad de hombres que mujeres (50%).";
 		}
 		
-		analisis += "\n   La poblacion total se estima que sera " + resPoblacion + " personas para el " + year + ".";
+		analisis += "\n   La poblacion total se estima que sera " + format.format(resPoblacion)+ " personas para el " + format.format(year) + ".";
 		
 		
 	// pobreza
 		analisis += "\n\n - En cuanto a la calidad de vida y pobreza, se puede decir que ";
 		if (resIngreso > resCostoCB) {
-			analisis += "\n   esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso) + ") \n   le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB) + ").";
+			analisis += "\n   esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + format.format(Math.round(resIngreso)) + ") \n   le es suficiente para poder comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB)) + ").";
 			analisis += "\n   Se puede decir que gran parte de la poblacion no vive en pobreza extrema.";
 			
 		} else if (resIngreso < resCostoCB) {
 			
-			analisis += "\n   esta en mal estado por que el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso) + ") \n   no es suficiente para poder al menos comprar la canasta basica (Q. " + Math.round(resCostoCB) + ").";
+			analisis += "\n   esta en mal estado por que el ingreso mensual promedio para una persona (Q. " + format.format(Math.round(resIngreso)) + ") \n   no es suficiente para poder al menos comprar la canasta basica (Q. " + format.format(Math.round(resCostoCB)) + ").";
 			analisis += "\n   Se puede decir que probablemente hay pobreza extrema y baja calidad de vida para gran parte de la poblacion.";
 			
 		} else {
 		
-			analisis += "\n   esta en un estado critico por que las personas en promedio pueden comprar la canasta bascia (" + Math.round(resCostoCB) + ") pero no les queda dinero para nada mas.";
+			analisis += "\n   esta en un estado critico por que las personas en promedio pueden comprar la canasta bascia (" + format.format(Math.round(resCostoCB)) + ") pero no les queda dinero para nada mas.";
 		}
 		
 		
 	// ambiente
 		analisis += "\n\n - En cuanto al estado del medio ambiente, se puede decir que ";
 		if (resMuertes > resMuertesA) {
-			analisis += "\n   esta en buen estado por que hay mas muertes normales (" + resMuertes + ") que por causa del medio ambiente (" + resMuertesA + ").";
-			analisis += "\n   Siendo estas solo el " + Math.round(100*resMuertesA/resMuertes) + "% de las defunciones totales.";
+			analisis += "\n   esta en buen estado por que hay mas muertes normales (" + format.format(resMuertes) + ") que por causa del medio ambiente (" + resMuertesA + ").";
+			analisis += "\n   Siendo estas solo el " + format.format(Math.round(100*resMuertesA/resMuertes)) + "% de las defunciones totales.";
 			
 		} else if (resMuertes < resMuertesA) {
 			
-			analisis += "\n   esta en muy mal estado por que hay mas muertes a causa del ambiente (" + resMuertesA + ") que por causa natural (" + resMuertes + ").";
-			analisis += "\n   Siendo la diferencia entre estas de " + (resMuertesA-resMuertes) + " defunciones.";
+			analisis += "\n   esta en muy mal estado por que hay mas muertes a causa del ambiente (" + format.format(resMuertesA) + ") que por causa natural (" + resMuertes + ").";
+			analisis += "\n   Siendo la diferencia entre estas de " + format.format(resMuertesA-resMuertes) + " defunciones.";
 			
 		} else {
 		
-			analisis += "\n   esta en un estado critico por que la cantidad de personas que mueren a causa del ambiente (" + resMuertesA + ") iguala a la cantidad de personas que mueren por causa natural (" + resMuertes + ").";
+			analisis += "\n   esta en un estado critico por que la cantidad de personas que mueren a causa del ambiente (" + format.format(resMuertesA) + ") iguala a la cantidad de personas que mueren por causa natural (" + format.format(resMuertes) + ").";
 		}
 		
 		
