@@ -8,7 +8,7 @@
 // Martin Ortega 18029
 
 // Classes del Proyecto
-
+/**/
 import java.lang.*;
 
 
@@ -300,21 +300,54 @@ class Analizador extends Calculadora {
 		
 	// pobreza
 		analisis += "\n\n - En cuanto a la calidad de vida y pobreza, se puede decir que ";
-		if (resIngreso > resCostoCB) {
-			analisis += "\n   esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso) + ") \n   le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB) + ").";
-			analisis += "\n   Se puede decir que gran parte de la poblacion no vive en pobreza extrema.";
+		if (resIngreso1 > resCostoCB1 && resIngreso2 > resCostoCB2) {
+
+			analisis += "\n   esta en buen estado porque el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso1) + ") \n  del " + year1 ", le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB1) + ").";
+			analisis += "\n En el caso del " + year2 + ", tambien esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso2) + ") \n  del " + year2 ", le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB2) + ").";
+			analisis += "\n   Se puede decir que gran parte de la poblacion en ambos casos no viven en pobreza extrema.";
 			
-		} else if (resIngreso < resCostoCB) {
+		} else if (resIngreso1 > resCostoCB1 && resIngreso2 < resCostoCB2) {
 			
-			analisis += "\n   esta en mal estado por que el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso) + ") \n   no es suficiente para poder al menos comprar la canasta basica (Q. " + Math.round(resCostoCB) + ").";
-			analisis += "\n   Se puede decir que probablemente hay pobreza extrema y baja calidad de vida para gran parte de la poblacion.";
+			analisis += "\n   esta en buen estado porque el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso1) + ") \n  del " + year1 ", le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB1) + ").";
+			analisis += "\n En el caso del " + year2 + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero no les queda dinero para nada mas.";
+			analisis += "\n   Se puede decir que gran parte de la poblacion del " + year1 +" no viven en pobreza extrema. Sin embargo, el " + year2 +  " no contiene el promedio necesario de economia para vivir sanos en su vida cotidiana.";
 			
-		} else {
+		} else if (resIngreso1 > resCostoCB1 && resIngreso2 == resCostoCB2){
 		
-			analisis += "\n   esta en un estado critico por que las personas en promedio pueden comprar la canasta bascia (" + Math.round(resCostoCB) + ") pero no les queda dinero para nada mas.";
+			analisis += "\n   esta en buen estado porque el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso1) + ") \n  del " + year1 +  ", le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB1) + ").";
+			analisis += "\n En el caso del " + year2 + ", esta en un critico estado por que las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + Math.round(resIngreso2) + ").";
+			analisis += "\n  Se puede decir que gran parte de la poblacion del " + year1 +" no viven en pobreza extrema. Sin embargo, en el " + year2 + " los ciudadanos estarian solamente sobreviviendo, indicando un mal desarrollo humano.";
+
+		} else if (resIngreso1 < resCostoCB1 && resIngreso2 > resCostoCB2) {
+
+			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB1) + "), pero no les queda dinero para nada mas.";
+			analisis += "\n En el caso del " + year2 + ", tambien esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso2) + "), le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB2) + ").";
+			analisis += "\n   Se puede decir que gran parte de la poblacion del " + year2 +" no viven en pobreza extrema. Sin embargo, el " + year1 +  " no contiene el promedio necesario de economia para vivir sanos en su vida cotidiana.";
+
+		}else if (resIngreso1 < resCostoCB1 && resIngreso2 < resCostoCB2) {
+			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB1) + "), pero no les queda dinero para nada mas.";
+			analisis += "\n En el caso del " + year2 + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero no les queda dinero para nada mas.";
+			analisis += "\n   Se puede decir que gran parte de la poblacion en ambos casos viven en pobreza extrema.";
+
+		}else if (resIngreso1 < resCostoCB1 && resIngreso2 == resCostoCB2) {
+			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB1) + "), pero no les queda dinero para nada mas.";
+			analisis += "\n En el caso del " + year2 + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + Math.round(resIngreso2) + ").";
+			analisis += "\n   Se puede decir que gran parte de la poblacion del " + year1 +"  viven en pobreza extrema. Sin embargo, el " + year2 + " los ciudadanos estarian solamnete sobreviviendo, indicando un mal desarrollo humano.";
+		}else if (resIngreso1 == resCostoCB1 && resIngreso2 > resCostoCB2) {
+			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + Math.round(resIngreso2) + ").";
+			analisis += "\n En el caso del " + year2 + ", tambien esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso2) + "), le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB2) + ").";
+			analisis += "\n   Se puede decir que gran parte de la poblacion del " + year2 +"  no viven en pobreza extrema. Sin embargo, el " + year1 +  " los ciudadanos estarian solamente sobreviviendo, indicando un mal desarrollo humano.";
+		}else if (resIngreso1 == resCostoCB1 && resIngreso2 < resCostoCB2) {
+			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + Math.round(resIngreso2) + ").";
+			analisis += "\n En el caso del " + year2 + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero no les queda dinero para nada mas.";
+			analisis += "\n   Se puede decir que gran parte de la poblacion del " + year2 +"  no viven en pobreza extrema. Sin embargo, el " + year1 +  " los ciudadanos estarian solamente sobreviviendo, indicando un mal desarrollo humano.";
+		}else if (resIngreso1 == resCostoCB1 && resIngreso2 == resCostoCB2) {
+			analisis += "\n   esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + Math.round(resIngreso2) + ").";
+			analisis += "\n En el caso del " + year2 + ", esta en un critico estado porque las personas en promedio pueden comprar la canasta basica (Q. " + Math.round(resCostoCB2) + "), pero solo estarian sobreviviendo, ya que el ingreso promedio es de (Q. " + Math.round(resIngreso2) + ").";
+			analisis += "\n   Se puede decir que gran parte de la poblacion en ambos casos solo sobreviven para alimentarse, pero no logran destacar en un desarrollo humano positivo";
 		}
 		
-		
+		 
 	// ambiente
 		analisis += "\n\n - En cuanto al estado del medio ambiente, se puede decir que ";
 		if (resMuertes > resMuertesA) {
