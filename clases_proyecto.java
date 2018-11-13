@@ -234,6 +234,114 @@ class Analizador extends Calculadora {
 		
 		return analisis;
 	}
+	public String analize(int year1, int year2){
+		String analisis ="\nPara el " + year1 + " y  el " + year2 + ", se obtiene el siguiente analisis:";
+
+		// para el analisis de personas y comparacion de años
+		int resPoblacion1 = this.calcPoblacionTotal(year1);
+		int resHombres1 = this.calcPoblacionHombres(year1);
+		int resMujeres1 = this.calcPoblacionMujeres(year1);
+		int resPoblacion2 = this.calcPoblacionTotal(year2);
+		int resHombres2 = this.calcPoblacionHombres(year2);
+		int resMujeres2 = this.calcPoblacionMujeres(year2);
+		
+		// para el analisis de pobreza
+		double resIngreso1 = this.calcIngresoLaboral(year1);
+		double resCostoCB1 = this.calcCostoCanastaBasica(year1);
+		double resIngreso1 = this.calcIngresoLaboral(year2);
+		double resCostoCB1 = this.calcCostoCanastaBasica(year2);
+		
+		
+		// para el analisis del ambiente
+		int resMuertes1 = this.calcMuertes(year1);
+		int resMuertesA1 = this.calcMuertesCausaAmbiental(year1);
+		int resMuertes1 = this.calcMuertes(year2);
+		int resMuertesA1 = this.calcMuertesCausaAmbiental(year2);
+		
+		analisis += "\n\n - En cuanto a las poblaciones, se puede decir que esta conformadas";
+		//1era condicion
+		if (resHombres1 > resMujeres1 && resHombres2 > resMujeres2) {
+
+			analisis += "\n   mayormente por hombres del " + year1 + ", siendo estos el " + Math.round(100*resHombres1/(resHombres1+resMujeres1)) + "%, mientras que del " + year2 + " , conformados mayormente de hombres, siendo estos el " + Math.round(100*resHombres2/(resHombres2+resMujeres2)) + "%.";
+		//2 condicion
+		} else if (resHombres1 < resMujeres1 && resHombres2 > resMujeres2) {
+			
+			analisis += "\n   mayormente por mujeres, siendo estas el " + Math.round(100*resMujeres1/(resHombres1+resMujeres1)) + "%, mientras que del " + year2 + " , conformados mayormente de hombres, siendo estos el " + Math.round(100*resMujeres2/(resHombres2+resMujeres2)) + "%.";
+		//3 condicion	
+		} else if (resHombres1 > resMujeres1 && resHombres2 < resMujeres2) {
+
+			analisis += "\n   mayormente por hombres del " + year1 + " , siendo estos el " + Math.round(100*resHombres1/(resHombres1+resMujeres1)) + "%, mientras que del " + year2 + " , conformados mayormente de mujeres, siendo estas el " + Math.round(100*resMujeres2/(resHombres2+resMujeres2)) + "%.";
+		//4 condicion
+		} else if (resHombres1 < resMujeres1 && resHombres2 < resMujeres2) {
+		
+			analisis += "\n   mayormente por mujeres del " + year1 + " , siendo estos el " + Math.round(100*resMujeres1/(resHombres1+resMujeres1)) + "%, mientras que del " + year2 + " , conformados mayormente de mujeres, siendo estas el " + Math.round(100*resMujeres2/(resHombres2+resMujeres2)) + "%.";
+		//5 condicion
+		}else if (resHombres1 == resMujeres1 && resHombres2 < resMujeres2) {
+		
+			analisis += "\n   por la misma cantidad de hombres que mujeres del"  + year1 + " (50%), mientras que del " + year2 + ", conformados mayormente de mujeres, siendo estas el " + Math.round(100*resMujeres2/(resHombres2+resMujeres2)) + "%.";
+		//6 condicion
+		} else if (resHombres1 == resMujeres1 && resHombres2 > resMujeres2) {
+			
+			analisis += "\n   por la misma cantidad de hombres que mujeres del"  + year1 + " (50%), mientras que del " + year2 + ", conformados mayormente de hombres, siendo estos el " + Math.round(100*resHombres2/(resHombres2+resMujeres2)) + "%.";
+		//7 condicion
+		} else if (resHombres1 > resMujeres1 && resHombres2 == resMujeres2) {
+
+			analisis += "\n   mayormente por hombres del " + year1 + ", siendo estos el " + Math.round(100*resHombres1/(resHombres1+resMujeres1)) + "%, mientras que del " + year2 + " , por la misma cantidad de hombres que mujeres (50%).";
+
+		//8 condicion
+		} else if (resHombres1 < resMujeres1 && resHombres2 == resMujeres2) {
+
+			analisis += "\n   mayormente por mujeres del " + year1 + ", siendo estas el " + Math.round(100*resMujeres1/(resMujeres1+resMujeres1)) + "%, mientras que del " + year2 + " , por la misma cantidad de hombres que mujeres (50%).";
+		//9 condicion
+		}else if (resHombres1 == resMujeres1 && resHombres2 == resMujeres2) {
+			
+			analisis += "\n   por la misma cantidad de hombres que mujeres en ambas poblaciones (50%)."
+
+		}
+		
+		analisis += "\n   La poblacion total se estima que sera " + resPoblacion1 + " personas para el " + year1 + ", mientras que del " + year2 + " sera" + resPoblacion2 + " personas.";
+		
+		
+	// pobreza
+		analisis += "\n\n - En cuanto a la calidad de vida y pobreza, se puede decir que ";
+		if (resIngreso > resCostoCB) {
+			analisis += "\n   esta en buen estado por que el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso) + ") \n   le es suficiente para poder comprar la canasta basica (Q. " + Math.round(resCostoCB) + ").";
+			analisis += "\n   Se puede decir que gran parte de la poblacion no vive en pobreza extrema.";
+			
+		} else if (resIngreso < resCostoCB) {
+			
+			analisis += "\n   esta en mal estado por que el ingreso mensual promedio para una persona (Q. " + Math.round(resIngreso) + ") \n   no es suficiente para poder al menos comprar la canasta basica (Q. " + Math.round(resCostoCB) + ").";
+			analisis += "\n   Se puede decir que probablemente hay pobreza extrema y baja calidad de vida para gran parte de la poblacion.";
+			
+		} else {
+		
+			analisis += "\n   esta en un estado critico por que las personas en promedio pueden comprar la canasta bascia (" + Math.round(resCostoCB) + ") pero no les queda dinero para nada mas.";
+		}
+		
+		
+	// ambiente
+		analisis += "\n\n - En cuanto al estado del medio ambiente, se puede decir que ";
+		if (resMuertes > resMuertesA) {
+			analisis += "\n   esta en buen estado por que hay mas muertes normales (" + resMuertes + ") que por causa del medio ambiente (" + resMuertesA + ").";
+			analisis += "\n   Siendo estas solo el " + Math.round(100*resMuertesA/resMuertes) + "% de las defunciones totales.";
+			
+		} else if (resMuertes < resMuertesA) {
+			
+			analisis += "\n   esta en muy mal estado por que hay mas muertes a causa del ambiente (" + resMuertesA + ") que por causa natural (" + resMuertes + ").";
+			analisis += "\n   Siendo la diferencia entre estas de " + (resMuertesA-resMuertes) + " defunciones.";
+			
+		} else {
+		
+			analisis += "\n   esta en un estado critico por que la cantidad de personas que mueren a causa del ambiente (" + resMuertesA + ") iguala a la cantidad de personas que mueren por causa natural (" + resMuertes + ").";
+		}
+		
+		
+	// conclusion
+		analisis += "\n";
+		
+		return analisis;
+		
+	}
 }
 
 
