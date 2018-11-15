@@ -353,18 +353,52 @@ class Analizador extends Calculadora {
 		 
 	// ambiente
 		analisis += "\n\n - En cuanto al estado del medio ambiente, se puede decir que ";
-		if (resMuertes1 > resMuertesA1) {
-			analisis += "\n   esta en buen estado por que hay mas muertes normales (" + format.format(resMuertes1) + ") que por causa del medio ambiente (" + format.format(resMuertesA1) + ").";
-			analisis += "\n   Siendo estas solo el " + format.format(Math.round(100*resMuertesA1/resMuertes1)) + "% de las defunciones totales.";
-			
-		} else if (resMuertes1 < resMuertesA1) {
-			
-			analisis += "\n   esta en muy mal estado por que hay mas muertes a causa del ambiente (" + format.format(resMuertesA2) + ") que por causa natural (" + format.format(resMuertes1) + ").";
-			analisis += "\n   Siendo la diferencia entre estas de " + format.format((resMuertesA1-resMuertes1)) + " defunciones.";
-			
-		} else {
 		
-			analisis += "\n   esta en un estado critico por que la cantidad de personas que mueren a causa del ambiente (" + format.format(resMuertesA1) + ") iguala a la cantidad de personas que mueren por causa natural (" + format.format(resMuertes1) + ").";
+		if (resMuertes1 > resMuertesA1 && resMuertes2 > resMuertesA2) {
+			analisis += "\n   esta en buen estado porque en " + format.format(year1) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es mayor que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA1) + ")";
+			analisis += "\n   y en el " + format.format(year2) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") tambien es mayor que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA2) + ").";
+			analisis += "\n   Por lo que, el medio ambiente se ha mantenido estable, esto quiere decir que la poblacion ha dejado de contaminar.";
+			
+		} else if (resMuertes1 > resMuertesA1 && resMuertes2 < resMuertesA2) {
+			analisis += "\n   esta en mal estado porque en " + format.format(year1) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es mayor que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA1) + ")";
+			analisis += "\n   y en el " + format.format(year2) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es menor que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA2) + ").";
+			analisis += "\n   Por lo que, la contaminacion al medio ambiente ha aumentado, provocando la muerte de mas personas.";
+		
+		} else if (resMuertes1 > resMuertesA1 && resMuertes2 == resMuertesA2) {
+			analisis += "\n   esta en mal estado porque en " + format.format(year1) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es mayor que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA1) + ")";
+			analisis += "\n   y en el " + format.format(year2) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es igual que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA2) + ").";
+			analisis += "\n   Por lo que, la contaminacion en Guatemala ha aumentado, a tal grado de que las muertes por causa natural sean iguales a las muertes por causa del medio ambiente.";
+		
+		}else if (resMuertes1 < resMuertesA1 && resMuertes2 > resMuertesA2) {
+			analisis += "\n   esta en buen estado porque en " + format.format(year1) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es menor que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA1) + "),";
+			analisis += "\n   pero en el " + format.format(year2) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es mayor que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA2) + ").";
+			analisis += "\n   Por lo que, se ha cuidado el medio ambiente y las personas casi no mueren por causa de la contaminacion en el medio ambiente.";
+			
+		} else if (resMuertes1 < resMuertesA1 && resMuertes2 < resMuertesA2) {
+			analisis += "\n   esta en mal estado porque en " + format.format(year1) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es menor que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA1) + "),";
+			analisis += "\n   y en el " + format.format(year2) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") tambien es menor que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA2) + ").";
+			analisis += "\n   Esto quiere decir que, la contaminacion en el medio ambiente ha aumentado y se ha mantenido igual, por lo que las personas son mas propensas a morir por la contaminacion que a morir por causas naturales.";
+		
+		} else if (resMuertes1 < resMuertesA1 && resMuertes2 == resMuertesA2) {
+			analisis += "\n   esta en mal estado porque en " + format.format(year1) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es menor que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA1) + "),";
+			analisis += "\n   y en el " + format.format(year2) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es igual que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA2) + ").";
+			analisis += "\n   Esto quiere decir que, la contaminacion en Guatemala ha disminuido un poco, sin embargo, no es lo suficiente para lograr obtener un desarrollo sostenible.";
+		
+		} else if (resMuertes1 == resMuertesA1 && resMuertes2 > resMuertesA2) {
+			analisis += "\n   esta en buen estado porque en " + format.format(year1) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es igual que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA1) + "),";
+			analisis += "\n   y en el " + format.format(year2) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es mayor que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA2) + ").";
+			analisis += "\n   Esto es bueno, pues la contaminacion ha disminuido y la cantidad de muertes por esta causa tambien ha disminuido.";
+			
+		} else if (resMuertes1 == resMuertesA1 && resMuertes2 < resMuertesA2) {
+			analisis += "\n   esta en mal estado porque en " + format.format(year1) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es igual que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA1) + "),";
+			analisis += "\n   y en el " + format.format(year2) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es menor que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA2) + ").";
+			analisis += "\n   Esto quiere decir que, en lugar de mejorar, vamos empeorando, pues la cantidad de muertes por causa del medio ambiente ha aumentado en comparacion con la actualidad.";
+		
+		} else if (resMuertes1 == resMuertesA1 && resMuertes2 == resMuertesA2) {
+			analisis += "\n   esta en mal estado porque en " + format.format(year1) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") es igual que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA1) + "),";
+			analisis += "\n   y en el " + format.format(year2) + " la cantidad de muertes naturales (" + format.format(resMuertes1) + ") tambien es igual que la cantidad de muertes por causa del medio ambiente (" + format.format(resMuertesA2) + ").";
+			analisis += "\n   Esto significa que, Guatemala esta en un estado critico, pues la misma cantidad de personas que muerten por causa natural, mueren por causa del medio ambiente.";
+		
 		}
 		
 		
