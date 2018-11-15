@@ -18,7 +18,8 @@ public class driver_proyecto {
 		// Variables
 		Scanner scan = new Scanner(System.in);
 		Sistema simulador = new Sistema();
-		int option = 0, inputYear=0;
+		int option = 0, inputYear=0, inputYear2 = 0;
+		String analizeConf = "";
 	
 		
 		try { Thread.sleep(2*500); } catch (Exception e) { System.out.println(">>> ERROR: " + e); }
@@ -99,7 +100,7 @@ public class driver_proyecto {
 				}
 
 				// progra defensiva para numero de opcion
-				while (inputYear < 1950) {
+				while (inputYear < 2009) {
 	
 					System.out.println("<!> No ingreso una opcion valida...");
 					System.out.println("\n>>> Ingrese el anio para el cual desea hacer el calculo: ");
@@ -114,36 +115,94 @@ public class driver_proyecto {
 						System.out.println("<!> No ingreso un numero...");	
 					}
 				}
+				
+				
+				if (option == 5) { // para verificar si quiere analizar 1 o 2 anios
+					
+					System.out.println("\n>>> Desea analizar/comparar con otro anio? Ingrese 'si' o 'no': ");
+					
+					analizeConf = scan.nextLine();
+					
+					if (analizeConf.equals("si")) {
+						
+						
+						System.out.println("\n>>> Ingrese el segundo anio para el cual desea hacer el calculo (futuro): ");
+		
+						try { // progra defensiva para opcion
+							inputYear2 = scan.nextInt();
+							scan.nextLine();
+			
+						} catch (InputMismatchException e) {
+		
+							scan.nextLine();
+							System.out.println("<!> No ingreso un numero...");	
+						}
+
+						// progra defensiva para numero de opcion
+						while (inputYear2 < 2009) {
+	
+							System.out.println("<!> No ingreso una opcion valida...");
+							System.out.println("\n>>> Ingrese el anio para el cual desea hacer el calculo: ");
+			
+							try {
+								inputYear2 = scan.nextInt();
+								scan.nextLine();
+			
+							} catch (InputMismatchException e) {
+			
+								scan.nextLine();
+								System.out.println("<!> No ingreso un numero...");	
+							}
+						}
+					} else {
+						
+						System.out.println(">>> ok!\n\n");
+					}
+					
+				}
 			}
+			
 			
 			
 			if (option == 1) {
 			
-				System.out.println(simulador.showPoblacion(inputYear));
+				System.out.println(simulador.showPoblacion(inputYear)); // show poblacion
 				
 			} else if (option == 2) {
 				
-				System.out.println(simulador.showIngresoLaboral(inputYear));
+				System.out.println(simulador.showIngresoLaboral(inputYear));  // show ingreso mensual promedio por persona
 				
 			} else if (option == 3) {
 				
-				System.out.println(simulador.showMuertes(inputYear));
+				System.out.println(simulador.showMuertes(inputYear)); // muertes totales 
 				
 			} else if (option == 4) {
 				
-				System.out.println(simulador.showCostoCanastaBasica(inputYear));
+				System.out.println(simulador.showCostoCanastaBasica(inputYear)); // costo anual de la canasta basica
 				
 			} else if (option == 5) {
 				
 				System.out.println("\n________________________________________________________________\n\n\t   Bienvenido al analizador de SimulaGuate");
 				
-				System.out.println("\n>>> Usted a ingresado el anio " + inputYear + " para realizar el calculo.");
-				System.out.println(">>> Espere un momento... \n   el analizador esta realizando los calculos.");
+				if (analizeConf.equals("si")) { // para cuando se van a analizar 2 anios
+					
+					System.out.println("\n>>> Usted a ingresado el anio " + inputYear + " y " + inputYear2 + " para realizar el calculo y analisis...");
+					System.out.println(">>> Espere un momento... \n   el analizador esta realizando los calculos.");
 				
-				try { Thread.sleep(5000); } catch (Exception e) { System.out.println(">>> ERROR: " + e); } // para que el usuario pueda leer
+					try { Thread.sleep(5000); } catch (Exception e) { System.out.println(">>> ERROR: " + e); } // para que el usuario pueda leer
 				
-				System.out.println("\n\n\n\n\n\n\n\n\n\n\t\t\t    ANALISIS" + simulador.showAnalisis(inputYear));
+					System.out.println("\n\n\n\n\n\n\n\n\n\n\t\t\t    ANALISIS" + simulador.showAnalisis(inputYear, inputYear2));
+					
+					
+				} else { // cuando solo se va analizar un anio
+					
+					System.out.println("\n>>> Usted a ingresado el anio " + inputYear + " para realizar el calculo.");
+					System.out.println(">>> Espere un momento... \n   el analizador esta realizando los calculos.");
 				
+					try { Thread.sleep(5000); } catch (Exception e) { System.out.println(">>> ERROR: " + e); } // para que el usuario pueda leer
+				
+					System.out.println("\n\n\n\n\n\n\n\n\n\n\t\t\t    ANALISIS" + simulador.showAnalisis(inputYear));
+				}
 			}
 			
 			if (option != 6) {
