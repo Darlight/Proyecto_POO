@@ -126,14 +126,14 @@ class Calculadora {
 	
 	public int calcMuertes(int year) {
 		
-		result = (int) Math.round( 37.47 * Math.pow(year, 2) + 70.567 * year + 66867);
+		result = (int) Math.round( 37.47 * Math.pow(year, 2) + 70.567 * year + 66867); // revisar
 		
 		return result;
 	}
 	
 	public int calcMuertesCausaAmbiental(int year) {
 		
-		result = (int) Math.round( 2632.6 * year + 9855.5);
+		result = (int) Math.round( 2632.6 * year + 9855.5); // revisar
 		
 		return result;
 	}
