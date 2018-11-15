@@ -1,5 +1,0 @@
-Colores de la página a utilizar:
-- Verde
-- Café
-- Gris
-- Blanco 
